@@ -19,4 +19,10 @@ class MainActivity : AppCompatActivity() {
         val monIntent = Intent(this, LyricsActivity::class.java)
         startActivity(monIntent)
     }
+
+    fun goToSettingsActivity(view: View){
+        val monIntent = Intent(this, SettingsActivity::class.java)
+        startActivity(monIntent)
+    }
+
 }

@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_baseline_audiotrack_24.xml" value="0.25677083333333334" />
+        <entry key="app/src/main/res/drawable/logo.xml" value="0.25677083333333334" />
         <entry key="app/src/main/res/layout/activity_lyrics.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.240625" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.240625" />
       </map>
     </option>
   </component>
