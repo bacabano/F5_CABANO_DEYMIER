@@ -11,7 +11,6 @@ import android.widget.EditText
 class MainActivity() : AppCompatActivity() {
 
     val BASE_URL: String = "https://api.lyrics.ovh/v1/"
-    //val url: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
