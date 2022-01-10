@@ -67,11 +67,14 @@
         android:id="@+id/imageButton"
         android:layout_width="158dp"
         android:layout_height="106dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_search"
+        app:layout_constraintVertical_bias="0.447"
         app:srcCompat="@drawable/ic_baseline_audiotrack_24" />
 
     <Button
