@@ -3,10 +3,14 @@ package com.example.tp2
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
+
+    val BASE_URL: String = "https://api.lyrics.ovh/v1/"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         actionBar?.title = "LyricZZ"
@@ -14,9 +18,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
+    fun createURL(): String {
+        val artist: String = (findViewById<EditText>(R.id.get_artist).text).toString()
+        val title: String = (findViewById<EditText>(R.id.get_title).text).toString()
+        val n_artist = artist.replace(' ', '+')
+        val n_title = title.replace(' ', '+')
+        return "$BASE_URL$n_artist/$n_title"
+    }
+
+
     fun goToLyricsActivity(view: View){
-        val button_search: Button = findViewById(R.id.button_search) as Button
         val monIntent = Intent(this, LyricsActivity::class.java)
+        val my_url : String = createURL()
         startActivity(monIntent)
     }
 
