@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
-import android.widget.TextView
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity() : AppCompatActivity() {
 
     val BASE_URL: String = "https://api.lyrics.ovh/v1/"
+    //val url: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         actionBar?.title = "LyricZZ"
@@ -23,13 +25,13 @@ class MainActivity : AppCompatActivity() {
         val title: String = (findViewById<EditText>(R.id.get_title).text).toString()
         val n_artist = artist.replace(' ', '+')
         val n_title = title.replace(' ', '+')
+
         return "$BASE_URL$n_artist/$n_title"
     }
 
-
     fun goToLyricsActivity(view: View){
         val monIntent = Intent(this, LyricsActivity::class.java)
-        val my_url : String = createURL()
+        val url = createURL()
         startActivity(monIntent)
     }
 
