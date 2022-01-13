@@ -30,7 +30,9 @@ class MainActivity() : AppCompatActivity() {
 
     fun goToLyricsActivity(view: View){
         val monIntent = Intent(this, LyricsActivity::class.java)
-        val url = createURL()
+
+        //Send the url to the LyricsActivity
+        monIntent.putExtra("url_shared", createURL())
         startActivity(monIntent)
     }
 

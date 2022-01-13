@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:justificationMode="inter_word"
-                android:text="No lyrics"
+                android:text="Chargement ..."
                 android:textSize="34sp" />
 
         </LinearLayout>
