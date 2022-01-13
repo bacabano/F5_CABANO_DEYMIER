@@ -6,23 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="104dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="600dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Dark Mode"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="384dp"
+        android:layout_height="424dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        app:layout_constraintVertical_bias="0.053">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="265dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="39dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Thème"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="48dp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vous pouvez changer le thème de l'application"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="83dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dark mode"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="123dp" />
+
+
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="299dp"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    tools:ignore="UseSwitchCompatOrMaterialXml"
+                    tools:layout_editor_absoluteX="349dp"
+                    tools:layout_editor_absoluteY="123dp" />
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#BABABA"
+                tools:layout_editor_absoluteY="162dp" />
+
+        </LinearLayout>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
