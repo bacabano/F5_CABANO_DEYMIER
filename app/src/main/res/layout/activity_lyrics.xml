@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:justificationMode="inter_word"
                 android:text="Chargement ..."
-                android:textSize="34sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
     </ScrollView>

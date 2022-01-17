@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 
 
 class MainActivity() : AppCompatActivity() {
@@ -31,9 +32,20 @@ class MainActivity() : AppCompatActivity() {
     fun goToLyricsActivity(view: View){
         val monIntent = Intent(this, LyricsActivity::class.java)
 
-        //Send the url to the LyricsActivity
-        monIntent.putExtra("url_shared", createURL())
-        startActivity(monIntent)
+        val artist: String = (findViewById<EditText>(R.id.get_artist).text).toString()
+        val title: String = (findViewById<EditText>(R.id.get_title).text).toString()
+
+        if (artist == "" || title == "") {
+            Toast.makeText(this, "Veuillez saisir un artiste et un titre.", Toast.LENGTH_SHORT).show()
+        }
+        else {
+            //Send the url to the LyricsActivity
+            monIntent.putExtra("url_shared", createURL())
+            monIntent.putExtra("artist", artist)
+            monIntent.putExtra("title", title)
+            startActivity(monIntent)
+        }
+
     }
 
     fun goToSettingsActivity(view: View){

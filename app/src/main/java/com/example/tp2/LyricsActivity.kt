@@ -11,17 +11,22 @@ import kotlinx.coroutines.launch
 class LyricsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        actionBar?.title = "Artist Title"
-        supportActionBar?.title = "Artist Title"
+        actionBar?.title = intent.getStringExtra("artist") + " " + intent.getStringExtra("title")
+        supportActionBar?.title = intent.getStringExtra("artist") + " " + intent.getStringExtra("title")
         setContentView(R.layout.activity_lyrics)
 
         //Get the url from the MainActivity
         val my_url = intent.getStringExtra("url_shared")
 
         lifecycleScope.launch{
-            val my_lyrics = CallAPI.getLyrics(my_url.toString())
             val txt = findViewById(R.id.text_lyrics) as TextView
-            txt.setText(my_lyrics)
+            try {
+                val my_lyrics = CallAPI.getLyrics(my_url.toString())
+                txt.setText(my_lyrics)
+            } catch (e: Exception) {
+                txt.setText("Les lyriczz de cette chanson n'ont pas été trouvés.")
+            }
+
         }
 
     }

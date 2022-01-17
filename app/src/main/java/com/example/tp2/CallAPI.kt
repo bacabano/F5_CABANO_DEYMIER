@@ -21,11 +21,7 @@ class CallAPI {
             val my_lyrics: HttpResponse = client.request(my_url)
             val str: String = my_lyrics.receive()
 
-            //val data = Lyrics(str)
-            //val string = Json.encodeToString(data)
-            //Log.d("lyrics", string)
             val obj = Json.decodeFromString<Lyrics>(str)
-            Log.d("lyrics", obj.lyrics)
             return obj.lyrics
 
         }
