@@ -3,7 +3,6 @@ package com.example.tp2
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -28,6 +27,9 @@ class MainActivity() : AppCompatActivity() {
 
         return "$BASE_URL$n_artist/$n_title"
     }
+
+
+    // --------------- NAVIGATE TO ACTIVITIES (LYRICS, SETTINGS, HISTORY)
 
     fun goToLyricsActivity(view: View){
         val monIntent = Intent(this, LyricsActivity::class.java)
@@ -54,7 +56,7 @@ class MainActivity() : AppCompatActivity() {
     }
 
     fun goToRecentActivity(view: View){
-        val monIntent = Intent(this, RecentActivity::class.java)
+        val monIntent = Intent(this, HistoryActivity::class.java)
         startActivity(monIntent)
     }
 

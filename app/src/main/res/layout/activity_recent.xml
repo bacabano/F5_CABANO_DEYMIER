@@ -4,21 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecentActivity">
+    tools:context=".HistoryActivity">
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="390dp"
-        android:layout_height="504dp"
+        android:layout_width="395dp"
+        android:layout_height="530dp"
         android:layout_marginTop="60dp"
-        android:layout_marginBottom="60dp"
         android:background="#F5F5F5"
         android:choiceMode="singleChoice"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.355" />
+        app:layout_constraintVertical_bias="0.283" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="ARTISTE - TITRE"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.873" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

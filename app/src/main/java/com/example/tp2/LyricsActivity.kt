@@ -2,12 +2,10 @@ package com.example.tp2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import java.io.File
-import java.io.FileWriter
 
 
 class LyricsActivity : AppCompatActivity() {
@@ -24,25 +22,23 @@ class LyricsActivity : AppCompatActivity() {
             val txt = findViewById(R.id.text_lyrics) as TextView
             try {
                 val my_lyrics = CallAPI.getLyrics(my_url.toString())
-                txt.setText(my_lyrics)
+                txt.text = my_lyrics
 
-                //Handle recent search
-                val fileName = "data.txt"
+                //Handle history
+                val filename = "myData.csv"
 
-                var file = File(fileName)
+                // path : /storage/emulated/0/Android/data/com.example.tp2/files
+                val path = getExternalFilesDir(null)
+                val fileOut = File(path, filename)
 
-                // create a new file
-                val isNewFileCreated :Boolean = file.createNewFile()
-                //var fileWriter = FileWriter("./recent_search.csv")
-                //val fileWriter = FileWriter(File("app", "recent_search.csv"))
-                //fileWriter.append(intent.getStringExtra("artist")!!.uppercase())
-                //fileWriter.append(',')
-                //fileWriter.append(intent.getStringExtra("title")!!.uppercase())
-                //fileWriter.append('\n')
-
+                fileOut.appendText(intent.getStringExtra("artist")!!.uppercase())
+                fileOut.appendText(",")
+                fileOut.appendText(intent.getStringExtra("title")!!.uppercase())
+                fileOut.appendText(",")
+                fileOut.appendText("\n")
 
             } catch (e: Exception) {
-                txt.setText("Les lyriczz de cette chanson n'ont pas été trouvés." + e)
+                txt.text = "Les lyriczz de cette chanson n'ont pas été trouvés.$e"
             }
 
         }
