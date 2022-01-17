@@ -5,12 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
-import com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.cli.TypeHandler.createURL
 import kotlinx.coroutines.launch
-import android.content.Intent
-
-
-
 
 
 class LyricsActivity : AppCompatActivity() {
