@@ -53,4 +53,9 @@ class MainActivity() : AppCompatActivity() {
         startActivity(monIntent)
     }
 
+    fun goToRecentActivity(view: View){
+        val monIntent = Intent(this, RecentActivity::class.java)
+        startActivity(monIntent)
+    }
+
 }
