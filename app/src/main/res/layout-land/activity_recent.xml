@@ -7,12 +7,12 @@
     tools:context=".HistoryActivity">
 
     <LinearLayout
-        android:layout_width="662dp"
-        android:layout_height="363dp"
+        android:layout_width="659dp"
+        android:layout_height="285dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="50dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="305dp"
+            android:layout_height="240dp"
             android:background="#F5F5F5"
             android:choiceMode="singleChoice" />
     </LinearLayout>
