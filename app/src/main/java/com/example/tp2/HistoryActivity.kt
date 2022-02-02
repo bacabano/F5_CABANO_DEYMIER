@@ -35,7 +35,7 @@ class HistoryActivity : AppCompatActivity() {
         listView.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
                 val selectedItem = parent.getItemAtPosition(position).toString()
-                val data = selectedItem.split(' ')
+                val data = selectedItem.split(" - ")
                 val monIntent = Intent(this, LyricsActivity::class.java)
 
                 val artist = data[0]
@@ -56,7 +56,9 @@ class HistoryActivity : AppCompatActivity() {
             val size = list.size
 
             for (i in size-1 downTo 0) {
-                history_list.add(list[i].replace(',', ' '))
+                val splitted = list[i].split(',')
+                val recent_search = '"' + splitted[0] + '"' + " - " + '"' + splitted[1] + '"'
+                history_list.add(recent_search)
             }
         } catch (e: Exception) {
             Log.d("History", e.toString())

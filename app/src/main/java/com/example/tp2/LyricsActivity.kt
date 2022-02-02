@@ -11,8 +11,8 @@ import java.io.File
 class LyricsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        actionBar?.title = intent.getStringExtra("artist")!!.uppercase() + " - " + intent.getStringExtra("title")!!.uppercase()
-        supportActionBar?.title = intent.getStringExtra("artist")!!.uppercase() + " - " + intent.getStringExtra("title")!!.uppercase()
+        actionBar?.title = (intent.getStringExtra("artist")!!.uppercase() + " - " + intent.getStringExtra("title")!!.uppercase()).replace('"',' ')
+        supportActionBar?.title = (intent.getStringExtra("artist")!!.uppercase() + " - " + intent.getStringExtra("title")!!.uppercase()).replace('"',' ')
         setContentView(R.layout.activity_lyrics)
 
         //Get the url from the MainActivity
