@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:backgroundTint="#F8B883"
+    android:backgroundTint="#497377"
     tools:context=".SplashScreenActivity">
 
     <TextView
@@ -28,11 +28,11 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
-        style="@android:style/Widget.Material.ProgressBar.Small"
+        style="@android:style/Widget.Material.ProgressBar.Small.Title"
         android:layout_width="269dp"
         android:layout_height="72dp"
         android:hapticFeedbackEnabled="false"
-        android:outlineSpotShadowColor="#6990CD"
+        android:outlineSpotShadowColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"

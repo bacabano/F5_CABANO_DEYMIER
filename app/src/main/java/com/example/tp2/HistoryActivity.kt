@@ -25,7 +25,7 @@ class HistoryActivity : AppCompatActivity() {
 
         fillHistory()
         // initialize an array adapter
-        val adapter:ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line,history_list)
+        val adapter:ArrayAdapter<String> = ArrayAdapter(applicationContext, android.R.layout.simple_dropdown_item_1line,history_list)
 
         // attach the array adapter with list view
         var listView = findViewById<ListView>(R.id.listView)
