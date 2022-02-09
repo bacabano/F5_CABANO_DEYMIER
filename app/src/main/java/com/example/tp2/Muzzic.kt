@@ -4,4 +4,5 @@ class Muzzic (
     var artist: String,
     var title: String,
     var lyriczz: String) {
+
 }

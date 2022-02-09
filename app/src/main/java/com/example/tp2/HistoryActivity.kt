@@ -23,7 +23,7 @@ class HistoryActivity : AppCompatActivity() {
         supportActionBar?.title = "Historique"
         setContentView(R.layout.activity_recent)
 
-        fillHistory()
+        fillHistoryDB()
         // initialize an array adapter
         val adapter:ArrayAdapter<String> = ArrayAdapter(applicationContext, android.R.layout.simple_dropdown_item_1line,history_list)
 
@@ -46,22 +46,12 @@ class HistoryActivity : AppCompatActivity() {
                 startActivity(monIntent)
             }
     }
-    fun fillHistory(){
-        // path : /storage/emulated/0/Android/data/com.example.tp2/files
-        val filename = "myData.csv"
-        val path = getExternalFilesDir(null)
-        try {
-            val fileOut = File(path, filename)
-            val list = fileOut.readLines()
-            val size = list.size
 
-            for (i in size-1 downTo 0) {
-                val splitted = list[i].split(',')
-                val recent_search = '"' + splitted[0] + '"' + " - " + '"' + splitted[1] + '"'
-                history_list.add(recent_search)
-            }
-        } catch (e: Exception) {
-            Log.d("History", e.toString())
+    fun fillHistoryDB(){
+        val datab = Database(applicationContext)
+        val list: MutableList<Muzzic> = datab.readData()
+        list.forEach(){
+            history_list.add(it.artist + " - " + it.title)
         }
     }
 }

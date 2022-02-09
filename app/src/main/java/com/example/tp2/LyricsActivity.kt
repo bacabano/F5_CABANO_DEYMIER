@@ -31,25 +31,7 @@ class LyricsActivity : AppCompatActivity() {
                 try {
                     val my_lyrics = CallAPI.getLyrics(my_url.toString())
                     txt.text = my_lyrics
-
-                    //Handle history
-                    val filename = "myData.csv"
-
-                    // path : /storage/emulated/0/Android/data/com.example.tp2/files
-                    val path = getExternalFilesDir(null)
-                    val fileOut = File(path, filename)
-
-                    fileOut.appendText(intent.getStringExtra("artist")!!.uppercase())
-                    fileOut.appendText(",")
-                    fileOut.appendText(intent.getStringExtra("title")!!.uppercase())
-                    fileOut.appendText(",")
-                    fileOut.appendText("\n")
-
-
-
                     datab.insertData(intent.getStringExtra("artist")!!.uppercase(), intent.getStringExtra("title")!!.uppercase(), my_lyrics)
-
-
 
                 } catch (e: Exception) {
                     txt.text = "Les lyriczz de cette chanson n'ont pas été trouvés."
