@@ -3,6 +3,7 @@ package com.example.tp2
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -17,6 +18,13 @@ class MainActivity() : AppCompatActivity() {
         actionBar?.title = "LyricZZ"
         supportActionBar?.title = "LyricZZ"
         setContentView(R.layout.activity_main)
+        Log.d("mydatabase", "hello")
+        val context = this
+        val db = Database(context)
+        db.insertData("eazezae", "azeazeaz", "eaeza")
+
+
+        Log.d("mydatabase", "delete")
     }
 
     fun createURL(): String {

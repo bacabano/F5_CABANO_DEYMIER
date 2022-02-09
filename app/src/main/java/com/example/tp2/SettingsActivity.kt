@@ -47,6 +47,10 @@ class SettingsActivity : AppCompatActivity() {
         val path = getExternalFilesDir(null)
         val fileOut = File(path, filename)
         fileOut.delete()
+
+        val context = this
+        val db = Database(context)
+        db.deleteDatabase()
         Toast.makeText(this, "Recherches récentes supprimées.", Toast.LENGTH_SHORT).show()
     }
 

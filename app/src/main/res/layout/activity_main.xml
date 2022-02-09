@@ -47,7 +47,6 @@
         android:fontFamily="sans-serif-black"
 
         android:text="LyricZZ"
-        android:textColor="#497377"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/get_artist"
         app:layout_constraintEnd_toEndOf="parent"

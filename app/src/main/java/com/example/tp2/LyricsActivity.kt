@@ -37,6 +37,10 @@ class LyricsActivity : AppCompatActivity() {
                 fileOut.appendText(",")
                 fileOut.appendText("\n")
 
+
+
+
+
             } catch (e: Exception) {
                 txt.text = "Les lyriczz de cette chanson n'ont pas été trouvés."
             }
