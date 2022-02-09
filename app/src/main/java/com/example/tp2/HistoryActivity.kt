@@ -35,7 +35,7 @@ class HistoryActivity : AppCompatActivity() {
         listView.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
                 val selectedItem = parent.getItemAtPosition(position).toString()
-                val data = selectedItem.split(" - ")
+                val data = selectedItem.split(" -- ")
                 val monIntent = Intent(this, LyricsActivity::class.java)
 
                 val artist = data[0]
@@ -43,6 +43,8 @@ class HistoryActivity : AppCompatActivity() {
                 monIntent.putExtra("artist", artist)
                 monIntent.putExtra("title", title)
                 monIntent.putExtra("url_shared", "$BASE_URL$artist/$title")
+                val datab = Database(applicationContext)
+                datab.updateDB(artist, title)
                 startActivity(monIntent)
             }
     }
@@ -51,7 +53,7 @@ class HistoryActivity : AppCompatActivity() {
         val datab = Database(applicationContext)
         val list: MutableList<Muzzic> = datab.readData()
         list.forEach(){
-            history_list.add(it.artist + " - " + it.title)
+            history_list.add(it.artist + " -- " + it.title)
         }
     }
 }

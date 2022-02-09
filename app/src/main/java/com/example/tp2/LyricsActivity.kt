@@ -39,6 +39,7 @@ class LyricsActivity : AppCompatActivity() {
             }
             Log.d("mydatabase","dans le if")
         } else {
+            datab.updateDB(intent.getStringExtra("artist")!!.uppercase(),intent.getStringExtra("title")!!.uppercase())
             txt.text=datab.selectLyriczz(query);
             Log.d("mydatabase","dans le else")
         }
