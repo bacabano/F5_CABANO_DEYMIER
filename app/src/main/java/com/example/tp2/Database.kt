@@ -10,10 +10,10 @@ import com.example.tp2.DatabaseDefinition.FeedEntry.COLUMN_NAME_ARTIST
 import com.example.tp2.DatabaseDefinition.FeedEntry.COLUMN_NAME_LYRICZZ
 import com.example.tp2.DatabaseDefinition.FeedEntry.COLUMN_NAME_TITLE
 import com.example.tp2.DatabaseDefinition.SQL_DELETE_ENTRIES
+import kotlinx.serialization.descriptors.PrimitiveKind
 
 object DatabaseDefinition {
     object FeedEntry : BaseColumns {
-        const val COLUMN_NAME_ID = "Id"
         const val COLUMN_NAME_ARTIST = "artist"
         const val COLUMN_NAME_TITLE = "title"
         const val COLUMN_NAME_LYRICZZ = "lyriczz"
@@ -90,5 +90,17 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         database.execSQL(SQL_DELETE_ENTRIES)
     }
 
+    fun checkHisto(query: String) : Boolean{
+        val db = this.readableDatabase
+        val result = db.rawQuery(query, null)
+        return result.moveToFirst()
+    }
+
+    fun selectLyriczz(query: String) : String{
+        val db = this.readableDatabase
+        val result = db.rawQuery(query, null)
+        result.moveToFirst()
+        return result.getString(result.getColumnIndexOrThrow(COLUMN_NAME_LYRICZZ))
+    }
 
 }

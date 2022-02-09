@@ -18,13 +18,12 @@ class MainActivity() : AppCompatActivity() {
         actionBar?.title = "LyricZZ"
         supportActionBar?.title = "LyricZZ"
         setContentView(R.layout.activity_main)
-        Log.d("mydatabase", "hello")
+
         val context = this
         val db = Database(context)
-        db.insertData("eazezae", "azeazeaz", "eaeza")
 
 
-        Log.d("mydatabase", "delete")
+
     }
 
     fun createURL(): String {

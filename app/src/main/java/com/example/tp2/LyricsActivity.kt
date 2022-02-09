@@ -2,6 +2,7 @@ package com.example.tp2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
@@ -15,36 +16,49 @@ class LyricsActivity : AppCompatActivity() {
         supportActionBar?.title = (intent.getStringExtra("artist")!!.uppercase() + " - " + intent.getStringExtra("title")!!.uppercase()).replace('"',' ')
         setContentView(R.layout.activity_lyrics)
 
-        //Get the url from the MainActivity
-        val my_url = intent.getStringExtra("url_shared")
+        //Check if lyriczz are in the database
+        val datab = Database(applicationContext)
+        val query = "SELECT * FROM HISTORIC " +
+                    "WHERE artist = \'" + intent.getStringExtra("artist")!!.uppercase() +
+                          "\' AND title = \'" + intent.getStringExtra("title")!!.uppercase() + "\';"
+        val txt = findViewById(R.id.text_lyrics) as TextView
+        if(!datab.checkHisto(query)){
+            //Get the url from the MainActivity
+            val my_url = intent.getStringExtra("url_shared")
 
-        lifecycleScope.launch{
-            val txt = findViewById(R.id.text_lyrics) as TextView
-            try {
-                val my_lyrics = CallAPI.getLyrics(my_url.toString())
-                txt.text = my_lyrics
+            lifecycleScope.launch{
 
-                //Handle history
-                val filename = "myData.csv"
+                try {
+                    val my_lyrics = CallAPI.getLyrics(my_url.toString())
+                    txt.text = my_lyrics
 
-                // path : /storage/emulated/0/Android/data/com.example.tp2/files
-                val path = getExternalFilesDir(null)
-                val fileOut = File(path, filename)
+                    //Handle history
+                    val filename = "myData.csv"
 
-                fileOut.appendText(intent.getStringExtra("artist")!!.uppercase())
-                fileOut.appendText(",")
-                fileOut.appendText(intent.getStringExtra("title")!!.uppercase())
-                fileOut.appendText(",")
-                fileOut.appendText("\n")
+                    // path : /storage/emulated/0/Android/data/com.example.tp2/files
+                    val path = getExternalFilesDir(null)
+                    val fileOut = File(path, filename)
 
-
+                    fileOut.appendText(intent.getStringExtra("artist")!!.uppercase())
+                    fileOut.appendText(",")
+                    fileOut.appendText(intent.getStringExtra("title")!!.uppercase())
+                    fileOut.appendText(",")
+                    fileOut.appendText("\n")
 
 
 
-            } catch (e: Exception) {
-                txt.text = "Les lyriczz de cette chanson n'ont pas été trouvés."
+                    datab.insertData(intent.getStringExtra("artist")!!.uppercase(), intent.getStringExtra("title")!!.uppercase(), my_lyrics)
+
+
+
+                } catch (e: Exception) {
+                    txt.text = "Les lyriczz de cette chanson n'ont pas été trouvés."
+                }
             }
-
+            Log.d("mydatabase","dans le if")
+        } else {
+            txt.text=datab.selectLyriczz(query);
+            Log.d("mydatabase","dans le else")
         }
 
     }
