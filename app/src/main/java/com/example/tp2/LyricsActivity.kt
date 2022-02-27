@@ -19,8 +19,9 @@ class LyricsActivity : AppCompatActivity() {
         //Check if lyriczz are in the database
         val datab = Database(applicationContext)
         val query = "SELECT * FROM HISTORIC " +
-                    "WHERE artist = \'" + intent.getStringExtra("artist")!!.uppercase() +
-                          "\' AND title = \'" + intent.getStringExtra("title")!!.uppercase() + "\';"
+                    "WHERE artist = \"" + intent.getStringExtra("artist")!!.uppercase() +
+                          "\" AND title = \"" + intent.getStringExtra("title")!!.uppercase() + "\";"
+        Log.d("mydatabase", query)
         val txt = findViewById(R.id.text_lyrics) as TextView
         if(!datab.checkHisto(query)){
             //Get the url from the MainActivity
