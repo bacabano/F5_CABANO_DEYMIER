@@ -17,6 +17,7 @@ class CallAPI: ViewModel() {
 
     companion object {
         suspend fun getLyrics(my_url: String): String {
+            Log.d("mydatabase", "1")
             Log.d("mydatabase", my_url)
             val client = HttpClient()
             val my_lyrics: HttpResponse = client.request(my_url)

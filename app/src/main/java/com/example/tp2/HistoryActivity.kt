@@ -43,8 +43,11 @@ class HistoryActivity : AppCompatActivity() {
                 monIntent.putExtra("artist", artist)
                 monIntent.putExtra("title", title)
                 monIntent.putExtra("url_shared", "$BASE_URL$artist/$title")
+                Log.d("mydatabase", "$BASE_URL$artist/$title")
                 val datab = Database(applicationContext)
+                Log.d("mydatabase", title)
                 datab.updateDB(artist, title)
+                Log.d("mydatabase", "3")
                 startActivity(monIntent)
             }
     }

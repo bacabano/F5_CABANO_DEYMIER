@@ -111,8 +111,8 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
 
     fun updateDB(artist: String, title: String){
         val database = this.writableDatabase
-        val lyriczz = selectLyriczz("SELECT * FROM HISTORIC " + "WHERE artist = \'" + artist + "\' AND title = \'" + title + "\';")
-        val query = "DELETE FROM HISTORIC WHERE artist = \'" + artist + "\' AND title = \'" + title + "\';"
+        val lyriczz = selectLyriczz("SELECT * FROM HISTORIC " + "WHERE artist = \"" + artist + "\" AND title = \"" + title + "\";")
+        val query = "DELETE FROM HISTORIC WHERE artist = \"" + artist + "\" AND title = \"" + title + "\";"
         database.execSQL(query)
         insertData(artist, title, lyriczz)
     }
