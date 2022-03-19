@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatDelegate
 
 class SettingsActivity : AppCompatActivity() {
 
-
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +38,6 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     fun deleteHist(view: View){
-        //Handle history
         val db = Database(this)
         db.deleteDatabase()
         Toast.makeText(this, getString(R.string.txt_search_deleted), Toast.LENGTH_SHORT).show()

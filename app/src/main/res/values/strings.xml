@@ -3,6 +3,8 @@
     <string name="txt_notfound">"Les lyriczz de cette chanson n'ont pas été trouvés."</string>
     <string name="txt_user_input_toast">"Veuillez saisir un artiste et un titre."</string>
 
-    <string name="settings_name">"Settings</string>
+    <string name="settings_name">"Settings"</string>
     <string name="txt_search_deleted">"Recherches récentes supprimées."</string>
+    <string name="historic_name">Historique</string>
+
 </resources>

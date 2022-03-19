@@ -14,6 +14,8 @@ import io.ktor.util.date.*
 
 
 object DatabaseDefinition {
+
+    // Define the columns database
     object FeedEntry : BaseColumns {
         const val COLUMN_NAME_ARTIST = "artist"
         const val COLUMN_NAME_TITLE = "title"
@@ -26,6 +28,8 @@ object DatabaseDefinition {
 
 
 class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+
+    // Create db
     override fun onCreate(db: SQLiteDatabase) {
         val SQL_CREATE_ENTRIES =
             "CREATE TABLE HISTORIC (" +
@@ -35,6 +39,7 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
                     COLUMN_NAME_DATE + " LONG);"
         db.execSQL(SQL_CREATE_ENTRIES)
     }
+
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS HISTORIC")
         onCreate(db)
@@ -49,6 +54,7 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         const val DATABASE_NAME = "HISTORIC_DB"
     }
 
+    // Insert data into the db
     fun insertData(artist: String, title: String, lyriczz: String) {
         val database = this.writableDatabase
         val contentValues = ContentValues()
@@ -60,7 +66,7 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         database.close()
     }
 
-
+    // Read the whole db order by date
     fun readData(): MutableList<Muzzic> {
         val list: MutableList<Muzzic> = ArrayList()
         val db = this.readableDatabase
@@ -79,11 +85,13 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         return list
     }
 
+    // Delete the db
     fun deleteDatabase() {
         val database = this.writableDatabase
         database.execSQL(SQL_DELETE_ENTRIES)
     }
 
+    // Check if the searched song is already in the db, then move it on top
     fun checkHisto(query: String) : Boolean{
         val db = this.readableDatabase
         val result = db.rawQuery(query, null)
@@ -94,6 +102,7 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         }
     }
 
+    // Display lyriczz, read it from the db instead of calling API
     fun selectLyriczz(query: String) : String{
         val db = this.readableDatabase
         val result = db.rawQuery(query, null)
@@ -105,6 +114,7 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         }
     }
 
+    // Update when an already searched song is searched again
     fun updateDB(artist: String, title: String){
         val database = this.writableDatabase
         val lyriczz = selectLyriczz("SELECT * FROM HISTORIC WHERE artist = \"$artist\" AND title = \"$title\";")

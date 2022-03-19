@@ -1,27 +1,47 @@
 package com.example.tp2
 
+import CustomAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 
 class HistoryActivity : AppCompatActivity() {
 
     val BASE_URL: String = "https://api.lyrics.ovh/v1/"
-    val history_list = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        actionBar?.title = "Historique"
-        supportActionBar?.title = "Historique"
+        actionBar?.title = getString(R.string.historic_name)
+        supportActionBar?.title = getString(R.string.historic_name)
         setContentView(R.layout.activity_recent)
 
-        fillHistoryDB()
+        val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
+        recyclerview.layoutManager = LinearLayoutManager(this)
+
+        // ArrayList of class ItemsViewModel
+        val data = ArrayList<ItemsViewModel>()
+
+        // Read db
+        val datab = Database(applicationContext)
+        val list: MutableList<Muzzic> = datab.readData()
+        list.forEach(){
+            data.add(ItemsViewModel(R.drawable.ic_baseline_music_note_24, it.artist + " -- " + it.title))
+        }
+
+        // This will pass the ArrayList to our Adapter
+        val adapter = CustomAdapter(data)
+
+        // Setting the Adapter with the recyclerview
+        recyclerview.adapter = adapter
+
         // initialize an array adapter
-        val adapter:ArrayAdapter<String> = ArrayAdapter(applicationContext, android.R.layout.simple_dropdown_item_1line,history_list)
+        /*val adapter:ArrayAdapter<String> = ArrayAdapter(applicationContext, android.R.layout.simple_dropdown_item_1line,history_list)
 
         // attach the array adapter with list view
         val listView = findViewById<ListView>(R.id.listView)
@@ -43,14 +63,6 @@ class HistoryActivity : AppCompatActivity() {
                 val datab = Database(applicationContext)
                 datab.updateDB(artist, title)
                 startActivity(monIntent)
-            }
-    }
-
-    fun fillHistoryDB(){
-        val datab = Database(applicationContext)
-        val list: MutableList<Muzzic> = datab.readData()
-        list.forEach(){
-            history_list.add(it.artist + " -- " + it.title)
-        }
+            }*/
     }
 }

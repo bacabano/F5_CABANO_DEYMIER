@@ -21,11 +21,11 @@ class LyricsActivity : AppCompatActivity() {
                           "\" AND title = \"" + intent.getStringExtra("title")!!.uppercase() + "\";"
         val txt = findViewById<TextView>(R.id.text_lyrics)
         if(!datab.checkHisto(query)){
+            // If the song has never been searched
             //Get the url from the MainActivity
             val my_url = intent.getStringExtra("url_shared")
 
             lifecycleScope.launch{
-
                 try {
                     val my_lyrics = CallAPI.getLyrics(my_url.toString())
                     txt.text = my_lyrics
@@ -36,11 +36,10 @@ class LyricsActivity : AppCompatActivity() {
                 }
             }
         } else {
+            // if the song is stored in the db
             datab.updateDB(intent.getStringExtra("artist")!!.uppercase(),intent.getStringExtra("title")!!.uppercase())
             txt.text=datab.selectLyriczz(query)
         }
 
     }
-
-
 }

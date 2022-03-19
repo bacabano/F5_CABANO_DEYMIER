@@ -14,6 +14,7 @@ data class Lyrics(val lyrics: String)
 class CallAPI: ViewModel() {
 
     companion object {
+        // Get the lyrics from the API and store them in a Lyrics object
         suspend fun getLyrics(my_url: String): String {
             val client = HttpClient()
             val my_lyrics: HttpResponse = client.request(my_url)
