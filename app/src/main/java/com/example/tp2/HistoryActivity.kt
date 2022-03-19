@@ -1,19 +1,13 @@
 package com.example.tp2
 
 import CustomAdapter
-import android.content.Intent
 import android.os.Bundle
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 
 class HistoryActivity : AppCompatActivity() {
-
-    val BASE_URL: String = "https://api.lyrics.ovh/v1/"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,35 +28,7 @@ class HistoryActivity : AppCompatActivity() {
             data.add(ItemsViewModel(R.drawable.ic_baseline_music_note_24, it.artist + " -- " + it.title))
         }
 
-        // This will pass the ArrayList to our Adapter
         val adapter = CustomAdapter(data)
-
-        // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
-
-        // initialize an array adapter
-        /*val adapter:ArrayAdapter<String> = ArrayAdapter(applicationContext, android.R.layout.simple_dropdown_item_1line,history_list)
-
-        // attach the array adapter with list view
-        val listView = findViewById<ListView>(R.id.listView)
-        listView.adapter = adapter
-
-        // list view item click listener
-        listView.onItemClickListener =
-            AdapterView.OnItemClickListener { parent, view, position, id ->
-                val selectedItem = parent.getItemAtPosition(position).toString()
-                val data = selectedItem.split(" -- ")
-                val monIntent = Intent(this, LyricsActivity::class.java)
-
-                val artist = data[0]
-                val title = data[1]
-                monIntent.putExtra("artist", artist)
-                monIntent.putExtra("title", title)
-                monIntent.putExtra("url_shared", "$BASE_URL$artist/$title")
-
-                val datab = Database(applicationContext)
-                datab.updateDB(artist, title)
-                startActivity(monIntent)
-            }*/
     }
 }

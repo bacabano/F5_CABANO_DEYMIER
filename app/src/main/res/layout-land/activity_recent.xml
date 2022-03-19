@@ -7,16 +7,15 @@
     tools:context=".HistoryActivity">
 
     <LinearLayout
-        android:layout_width="659dp"
-        android:layout_height="285dp"
-        android:layout_marginStart="10dp"
+        android:layout_width="673dp"
+        android:layout_height="358dp"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
@@ -35,12 +34,13 @@
             android:layout_height="wrap_content"
             android:text="Vous pouvez retrouver les lyriczz directement en cliquant sur une chanson." />
 
-        <ListView
-            android:id="@+id/listView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:background="#F5F5F5"
-            android:choiceMode="singleChoice" />
+            android:layout_height="259dp"
+            tools:itemCount="5"
+            tools:listitem="@layout/card_view_design" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
