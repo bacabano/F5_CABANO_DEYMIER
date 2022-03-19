@@ -1,12 +1,10 @@
 package com.example.tp2
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
-import java.io.File
 
 
 class LyricsActivity : AppCompatActivity() {
@@ -21,8 +19,7 @@ class LyricsActivity : AppCompatActivity() {
         val query = "SELECT * FROM HISTORIC " +
                     "WHERE artist = \"" + intent.getStringExtra("artist")!!.uppercase() +
                           "\" AND title = \"" + intent.getStringExtra("title")!!.uppercase() + "\";"
-        Log.d("mydatabase", query)
-        val txt = findViewById(R.id.text_lyrics) as TextView
+        val txt = findViewById<TextView>(R.id.text_lyrics)
         if(!datab.checkHisto(query)){
             //Get the url from the MainActivity
             val my_url = intent.getStringExtra("url_shared")
@@ -35,14 +32,12 @@ class LyricsActivity : AppCompatActivity() {
                     datab.insertData(intent.getStringExtra("artist")!!.uppercase(), intent.getStringExtra("title")!!.uppercase(), my_lyrics)
 
                 } catch (e: Exception) {
-                    txt.text = "Les lyriczz de cette chanson n'ont pas été trouvés."
+                    txt.text = getString(R.string.txt_notfound)
                 }
             }
-            Log.d("mydatabase","dans le if")
         } else {
             datab.updateDB(intent.getStringExtra("artist")!!.uppercase(),intent.getStringExtra("title")!!.uppercase())
-            txt.text=datab.selectLyriczz(query);
-            Log.d("mydatabase","dans le else")
+            txt.text=datab.selectLyriczz(query)
         }
 
     }

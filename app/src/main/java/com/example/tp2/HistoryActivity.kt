@@ -1,15 +1,11 @@
 package com.example.tp2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.Toast
-import java.io.File
-import java.lang.Exception
+import androidx.appcompat.app.AppCompatActivity
 
 
 class HistoryActivity : AppCompatActivity() {
@@ -28,7 +24,7 @@ class HistoryActivity : AppCompatActivity() {
         val adapter:ArrayAdapter<String> = ArrayAdapter(applicationContext, android.R.layout.simple_dropdown_item_1line,history_list)
 
         // attach the array adapter with list view
-        var listView = findViewById<ListView>(R.id.listView)
+        val listView = findViewById<ListView>(R.id.listView)
         listView.adapter = adapter
 
         // list view item click listener
@@ -43,11 +39,9 @@ class HistoryActivity : AppCompatActivity() {
                 monIntent.putExtra("artist", artist)
                 monIntent.putExtra("title", title)
                 monIntent.putExtra("url_shared", "$BASE_URL$artist/$title")
-                Log.d("mydatabase", "$BASE_URL$artist/$title")
+
                 val datab = Database(applicationContext)
-                Log.d("mydatabase", title)
                 datab.updateDB(artist, title)
-                Log.d("mydatabase", "3")
                 startActivity(monIntent)
             }
     }

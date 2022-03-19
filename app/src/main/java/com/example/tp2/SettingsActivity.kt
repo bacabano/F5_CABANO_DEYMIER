@@ -1,13 +1,12 @@
 package com.example.tp2
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Switch
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import java.io.File
 
 
 class SettingsActivity : AppCompatActivity() {
@@ -16,8 +15,8 @@ class SettingsActivity : AppCompatActivity() {
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        actionBar?.title = "Settings"
-        supportActionBar?.title = "Settings"
+        actionBar?.title = getString(R.string.settings_name)
+        supportActionBar?.title = getString(R.string.settings_name)
         setContentView(R.layout.activity_settings)
 
 
@@ -41,17 +40,9 @@ class SettingsActivity : AppCompatActivity() {
 
     fun deleteHist(view: View){
         //Handle history
-        val filename = "myData.csv"
-
-        // path : /storage/emulated/0/Android/data/com.example.tp2/files
-        val path = getExternalFilesDir(null)
-        val fileOut = File(path, filename)
-        fileOut.delete()
-
-        val context = this
-        val db = Database(context)
+        val db = Database(this)
         db.deleteDatabase()
-        Toast.makeText(this, "Recherches récentes supprimées.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.txt_search_deleted), Toast.LENGTH_SHORT).show()
     }
 
 }
