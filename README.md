@@ -48,6 +48,7 @@ The screenshots of the landscape app can be found in the [appendix](#appendix).
 ## Storage and API
 ***
 When we search for a song, we check if the lyrics of the song is already in the database. If not, we call the API (https://lyricsovh.docs.apiary.io/#?ref=apilist.fun) and we store it in the database. Otherwise, we use the database and update the historic.
+***The application only needs permission to INTERNET in order to work***
 
 <a name="appendix"></a>
 ## Appendix
