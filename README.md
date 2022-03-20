@@ -10,7 +10,7 @@
 <a name="pres"></a>
 ## Presentation
 ***
-Lyriczz is an application which allows you to search and find the lyrics from any song using the https://api.lyrics.ovh/v1/ API. You just need to enter the artist and the name of the song.
+Lyriczz is an application which allows you to search and find the lyrics from any song using the lyrics.ovh API (https://lyricsovh.docs.apiary.io/#?ref=apilist.fun). You just need to enter the artist and the name of the song.
 
 ***Note that to develop this application, we used the emulator Nexus 5X API 30.***
 
@@ -47,7 +47,7 @@ The screenshots of the landscape app can be found in the [appendix](#appendix).
 <a name="st&api"></a>
 ## Storage and API
 ***
-When we search for a song, we check if the lyrics of the song is already in the database. If not, we call the API (https://api.lyrics.ovh/v1/) and we store it in the database. Otherwise, we use the database and update the historic.
+When we search for a song, we check if the lyrics of the song is already in the database. If not, we call the API (https://lyricsovh.docs.apiary.io/#?ref=apilist.fun) and we store it in the database. Otherwise, we use the database and update the historic.
 
 <a name="appendix"></a>
 ## Appendix
